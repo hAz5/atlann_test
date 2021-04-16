@@ -1,0 +1,46 @@
+version: '3.1'
+services:
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: web-test-atlann
+    environment:
+      - APACHE_RUN_USER=#1000
+      - APACHE_RUN_GROUP=#1000
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 8000:80
+    links:
+      - db
+    networks:
+      - test-atlann-network
+
+  db:
+    image: mariadb:10.3
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: notSecureChangeMe
+      MYSQL_DATABASE: atlann_db_test
+    networks:
+      - test-atlann-network
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: db
+    networks:
+      - test-atlann-network
+
+volumes:
+  db_data: {}
+
+networks:
+  test-atlann-network:
+    external: true
