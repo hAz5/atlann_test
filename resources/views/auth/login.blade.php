@@ -67,6 +67,18 @@
                     </form>
                 </div>
             </div>
+            <br>
+            <div class="card">
+                <div class="card-header">System Users</div>
+                <div class="card-body">
+                    <h2>Users Password is : "password"</h2>
+                    <ol>
+                        @foreach($users  as $user)
+                            <li><b>Role</b> ({{ implode(', ', $user->roles->pluck('name')->toArray()) }}) <b>Email</b> :{{$user->email}} </li>
+                        @endforeach
+                    </ol>
+                </div>
+            </div>
         </div>
     </div>
 </div>
