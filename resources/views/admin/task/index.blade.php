@@ -42,7 +42,7 @@
                 @forelse($tasks as $task)
                     <tr class="text-center">
                         <td>{{$task->id}}</td>
-                        <td>{{$task->user->name}}</td>
+                        <td><a href="{{ route('admin.user.show', $task->user) }}"> {{$task->user->name}}</a></td>
                         <td>{{$task->name}}</td>
                         <td>{{substr($task->note,0,25)}}...</td>
                         <td>{{$task->time}}</td>

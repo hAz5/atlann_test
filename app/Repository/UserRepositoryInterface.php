@@ -6,4 +6,6 @@ use Illuminate\Support\Collection;
 interface UserRepositoryInterface
 {
     public function all(): Collection;
+
+    public function getUsersWithTasksAndRoles(): Collection;
 }

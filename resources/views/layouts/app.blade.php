@@ -41,7 +41,7 @@
                         @auth
                             @if(Auth::user()->hasRole('admin'))
                                 <li><a class="btn btn-link" href="{{ route('admin.task.index') }}">Tasks List</a></li>
-                                <li><a class="btn btn-link" href="/">Users List</a></li>
+                                <li><a class="btn btn-link" href="{{ route('admin.user.index') }}">Users List</a></li>
                             @endif
                             @if(Auth::user()->hasRole('employee'))
                                 <li><a class="btn btn-link" href="{{ route('employee.task.index') }}">My Tasks</a></li>
