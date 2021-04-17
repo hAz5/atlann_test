@@ -38,7 +38,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @auth
+                            @if(Auth::user()->hasRole('admin'))
+                                <li><a class="btn btn-link" href="{{ route('admin.task.index') }}">Tasks List</a></li>
+                                <li><a class="btn btn-link" href="/">Users List</a></li>
+                            @endif
+                            @if(Auth::user()->hasRole('employee'))
+                                <li><a class="btn btn-link" href="{{ route('employee.task.index') }}">My Tasks</a></li>
+                                <li><a class="btn btn-link" href="{{ route('employee.task.create') }}">Create Task</a></li>
+                            @endif
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -48,12 +57,6 @@
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else

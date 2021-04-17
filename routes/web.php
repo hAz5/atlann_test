@@ -3,10 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LoginController::class, 'showLoginForm']);
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login-form');
 Route::post('login', [LoginController::class, 'login'])->name('login');
