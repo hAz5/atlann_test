@@ -4,6 +4,7 @@ RUN apt-get update
 
 # 1. development packages
 RUN apt-get install -y \
+    npm\
     git \
     zip \
     curl \

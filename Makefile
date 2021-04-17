@@ -32,6 +32,7 @@ help:
 
 up:
 	COMPOSE_HTTP_TIMEOUT=300 docker-compose up -d
+	@docker-compose exec --user=$(ATLANN_USER) web sh -c 'php artisan migrate && php artisan db:seed'
 status:
 	docker-compose ps
 shell:

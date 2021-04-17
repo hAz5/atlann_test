@@ -20,10 +20,12 @@ class IsOwnerTask
     {
         /** @var \App\Models\Task $task */
         $task = $request->task;
-        if ($task->user_id  === Auth::user()->id) {
+        $id = Auth::user()->id;
+        if ($task->user_id  === $id) {
+
             return $next($request);
         }
 
-        return redirect(route('employee.task.index') );
+        return redirect(route('employee.task.index'));
     }
 }
