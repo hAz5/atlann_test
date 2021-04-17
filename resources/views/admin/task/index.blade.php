@@ -24,7 +24,7 @@
         </div>
         <div class="col-lg-10  offset-1 text-center">
 
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover" id="tasks_list">
                 <thead>
                 <tr class="text-center">
                     <th>Task ID</th>
@@ -60,7 +60,7 @@
                 </tbody>
             </table>
 
-{{--            {{ $tasks->links() }}--}}
+            {{ $tasks->links() }}
         </div>
 
     </div>
