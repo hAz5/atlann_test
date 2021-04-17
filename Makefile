@@ -29,6 +29,9 @@ help:
 	@echo "restart"
 	@echo "  Restarting all containers"
 	@echo ""
+	@echo "test"
+	@echo "  Run tests"
+	@echo ""
 
 up:
 	COMPOSE_HTTP_TIMEOUT=300 docker-compose up -d
@@ -41,5 +44,7 @@ shell-as-root:
 	docker-compose exec web bash
 destroy:
 	COMPOSE_HTTP_TIMEOUT=300 docker-compose down
+test:
+	docker-compose exec --user=$(ATLANN_USER) web sh -c 'php artisan test'
 restart:
 	docker-compose restart
