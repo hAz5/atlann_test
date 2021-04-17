@@ -10,18 +10,27 @@ This is test app for Atalann
 - **[npm](https://www.npmjs.com/)**
 
 ## Install
+1- install docker And docker-compose
 
-At first Install Docker && docker-compose; then in the root path run command 
-`
-make up 
-`
-this command pull docker containers after that it run:
+2- clone project: `git clone ...`
 
-`
-php artisan migrate` &&
-`php artisan db:seed` 
+3- run command `make up`
 
-## Available Make Commands 
+4- run `make shell` then run `npm install && npm run dev`
+
+
+\#maybe you will need run `docker network create test-atlann-network` in `make up` command for the first time. 
+
+## Parameters
+Routes:
+Admin : `localhost:8085`
+
+phpmyadmin: `localhost:8086`
+ 
+Database: port: `3306` host: `db` database: `atlann_db_test` password: `notSecureChangeMe` user: `root`
+
+
+## Available Makefile Commands 
 
 	# up
 	  Create and start Test's containers.
